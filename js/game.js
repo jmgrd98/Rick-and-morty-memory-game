@@ -20,6 +20,10 @@ function createCustomElement(tag, className){
     return element
 }
 
+function revealCard({target}){
+    target.parentNode.classList.add('reveal-card')
+}
+
 function createCard(character){
     const card = createCustomElement('div', 'card')
     const front = createCustomElement('div', 'face front')
@@ -30,6 +34,8 @@ function createCard(character){
     card.appendChild(front)
     card.appendChild(back)
     board.appendChild(card)
+
+    card.addEventListener('click', revealCard)
 
     return card
 }
