@@ -3,6 +3,9 @@ const button = document.getElementById('button')
 const form = document.getElementById('form')
 
 
+//Função para validar o Input e remover o
+//atributo disabled
+
 const validateInput = ({target}) => {
     if(target.value.length > 2){
         button.removeAttribute('disabled')
@@ -10,6 +13,10 @@ const validateInput = ({target}) => {
     }
     button.setAttribute('disabled', '')
 }
+
+// Função que guarda o valor do input
+// no localStorage e direciona o usuário
+// para a página do jogo.
 
 const handleSubmit = (event) => {
     event.preventDefault();

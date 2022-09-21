@@ -62,6 +62,8 @@ function createCard(character){
     return card
 }
 
+//Função de carregar o jogo
+
 function loadGame(){
 
     const duplicateCharacters = [...characters, ...characters]
