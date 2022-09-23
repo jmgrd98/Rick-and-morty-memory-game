@@ -7,10 +7,16 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  background: url("../assets/bg.jpg");
+  max-height: 450px;
+  padding: 20px;
+  padding-bottom: 20px;
 }
 
 header {
-  margin: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
   width: 80%;
   background-color: black;
   border-radius: 10px;
@@ -23,13 +29,18 @@ main {
   grid-template-columns: repeat(5, 1fr);
   flex-wrap: wrap;
   gap: 15px;
-  width: 90%;
+  width: 45%;
   max-width: 800px;
 }
 
+@media screen and (max-width: 950px) {
+  main {
+    width: 90%;
+  }
+}
 .card {
   aspect-ratio: 3/4;
-  width: 100%;
+  width: 80%;
   background-color: grey;
   border-radius: 5px;
   position: relative;
@@ -62,3 +73,17 @@ main {
 .reveal-card {
   transform: rotateY(180deg);
 }
+
+.disabled-card {
+  filter: saturate(0);
+  opacity: 0.5;
+}
+
+.alert {
+  width: 50%;
+  height: 50%;
+  background-color: black;
+  color: wheat;
+  position: absolute;
+  z-index: 3;
+}/*# sourceMappingURL=game.css.map */

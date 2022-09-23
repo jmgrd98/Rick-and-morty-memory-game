@@ -1,5 +1,7 @@
-const root = document.querySelector('#rootplayer')
+const player = document.querySelector('#player')
 const board = document.querySelector('#grid')
+const time = document.querySelector('#time')
+
 const characters = [
     'beth',
     'jerry',
@@ -12,7 +14,14 @@ const characters = [
     'meeseeks',
     'scroopy'
 ]
-root.innerHTML = localStorage.getItem('player')
+
+function timer(){
+
+    setTimeout(() => {
+
+    })
+
+}
 
 function createCustomElement(tag, className){
     const element = document.createElement(tag)
@@ -23,8 +32,42 @@ function createCustomElement(tag, className){
 let firstCard = '';
 let secondCard = '';
 
+function checkEndGame(){
+    const disabledCards = document.querySelectorAll('.disabled-card')
+
+    if(disabledCards.length == 20){
+        // const alert = document.createElement('div')
+        // alert.classList.add('alert')
+        // alert.innerHTML = 'Parabéns! Você venceu!'
+
+        alert('Parabéns! Você venceu!')
+    }
+}
+
 function checkCards(){
-    
+
+const firstCharacter = firstCard.getAttribute('data-character')
+const secondCharacter = secondCard.getAttribute('data-character')
+
+    if(firstCharacter == secondCharacter){
+
+        firstCard.firstChild.classList.add('disabled-card')
+        secondCard.firstChild.classList.add('disabled-card')
+
+        firstCard = ''
+        secondCard = ''
+
+        checkEndGame()
+    }
+    else{
+        setTimeout(() => {
+            firstCard.classList.remove('reveal-card')
+            secondCard.classList.remove('reveal-card')
+
+            firstCard = ''
+            secondCard = ''
+        }, 500)
+    }
 }
 
 function revealCard({target}){
@@ -58,6 +101,8 @@ function createCard(character){
     board.appendChild(card)
 
     card.addEventListener('click', revealCard)
+    card.setAttribute('data-character', character)
+
 
     return card
 }
@@ -76,5 +121,11 @@ function loadGame(){
     })
 }
 
-loadGame()
+window.onload = () => {
+
+    player.innerHTML = localStorage.getItem('player')
+    time.innerHTML = `Tempo: ${timer()}`
+
+    loadGame()
+}
 
