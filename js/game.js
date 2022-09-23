@@ -17,9 +17,10 @@ const characters = [
 
 function timer(){
 
-    setTimeout(() => {
-
-    })
+    this.loop = setInterval(() => {
+        const currentTime = Number(time.innerHTML);
+        time.innerHTML = currentTime + 1
+    }, 1000)
 
 }
 
@@ -40,7 +41,8 @@ function checkEndGame(){
         // alert.classList.add('alert')
         // alert.innerHTML = 'Parabéns! Você venceu!'
 
-        alert('Parabéns! Você venceu!')
+        clearInterval(this.loop)
+        alert(`Parabéns! Seu tempo foi: ${time.innerHTML}`)
     }
 }
 
@@ -124,8 +126,8 @@ function loadGame(){
 window.onload = () => {
 
     player.innerHTML = localStorage.getItem('player')
-    time.innerHTML = `Tempo: ${timer()}`
 
+    timer()
     loadGame()
 }
 
